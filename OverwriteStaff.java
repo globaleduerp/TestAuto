@@ -5,19 +5,22 @@ package Day13;
 		import org.openqa.selenium.WebDriver;
 	import org.openqa.selenium.WebElement;
 	import org.openqa.selenium.chrome.ChromeDriver;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+// Test for version
 	public class OverwriteStaff {
 
-			public static void main(String[] args) throws IOException, Exception {
-		        WebDriver driver = new ChromeDriver();
-		        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-				driver.manage().window().maximize();
-				driver.get("http://ge-erp.com/Admin/Login/Index");
-				driver.findElement(By.id("txtEmail")).sendKeys("Bhumisaini@gmail.com");
-			    driver.findElement(By.id("txtPassword")).sendKeys("School@123");
-			    driver.findElement(By.xpath(" //button[text()='Login']")).click();  
-			  //button[text()='Login']
-			    driver.findElement(By.xpath("//span[text()='HR Module']")).click();
+		public void OverwriteStaff1(WebDriver driver, WebDriverWait wait) throws InterruptedException, IOException {
+//		        WebDriver driver = new ChromeDriver();
+//		        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
+//				driver.manage().window().maximize();
+//				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(90));
+//				driver.get("http://ge-erp.com/Admin/Login/Index");
+//				driver.findElement(By.id("txtEmail")).sendKeys("Bhumisaini@gmail.com");
+//			    driver.findElement(By.id("txtPassword")).sendKeys("School@123");
+//			    driver.findElement(By.xpath(" //button[text()='Login']")).click();  
+//			  //button[text()='Login']
+//			    driver.findElement(By.xpath("//span[text()='HR Module']")).click();
 			     driver.findElement(By.xpath("//a[text()='Employee Leave Management']")).click();
 			     driver.findElement(By.xpath("//a[normalize-space()='Overwrite Staff Attendance']")).click();
 //			     driver.findElement(By.xpath("//a[text()='Employee Leave Management']")).click();
@@ -36,10 +39,10 @@ package Day13;
 					String RevisedRemarks=Excelutils.getCellData(filePath, "Overwrite Attendance",i,3);
 					
 //					pass above data into application
-//					driver.findElement(By.xpath("//input[@placeholder='search table']")).clear();
-					driver.findElement(By.xpath("//input[@name='nm_undefined_attendancedate']")).clear();
-					  driver.findElement(By.xpath("//input[@name='nm_undefined_attendancedate']")).sendKeys(Date); 
-					  driver.findElement(By.xpath("//input[@placeholder='search table']")).clear();
+//					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='search table']"))).clear();
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='nm_undefined_attendancedate']"))).clear();
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='nm_undefined_attendancedate']"))).sendKeys(Date); 
+//					  driver.findElement(By.xpath("//input[@placeholder='search table']")).clear();
 //					  driver.findElement(By.xpath("//div[@id='id_undefined_empmaster_id']")).click();
 //					  driver.findElement(By.xpath("(//span[text()='Clear'])")).click();  
 //					  Thread.sleep(1000);
@@ -47,9 +50,10 @@ package Day13;
 //					  element1.click();
 ////					  element1.sendKeys(Employee);
 //					  
-					  System.out.println("Print");
-					  driver.findElement(By.xpath("//input[@placeholder='search table']")).clear();
-					  driver.findElement(By.xpath("//input[@placeholder='search table']")).sendKeys(Employee);
+//					  System.out.println("Print");
+					WebElement element1= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='search table']")));
+					element1.sendKeys("\b".repeat(element1.getAttribute("value").length()));
+					  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='search table']"))).sendKeys(Employee);
 //					  driver.findElement(By.xpath("//input[@placeholder='search table']")).clear();
 					
 //					  driver.findElement(By.xpath("//div[normalize-space(text())='" + Employee + "']")).click();   
@@ -59,28 +63,32 @@ package Day13;
 					 WebElement B1= driver.findElement(By.xpath("(//div[@class='dx-lookup-field-wrapper'])[3]"));
 					 B1.click();
 					  Thread.sleep(2000);
-					  driver.findElement(By.xpath("//input[@role='textbox']")).sendKeys(RevisedDayStatus);
+					  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@role='textbox']"))).sendKeys(RevisedDayStatus);
 					  Thread.sleep(2000);
-					  System.out.println("Status");
-					 WebElement element= driver.findElement(By.xpath("//div[normalize-space(text())='" + RevisedDayStatus + "']"));
+//					  System.out.println("Status");
+					 WebElement element= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[normalize-space(text())='" + RevisedDayStatus + "']")));
 					 element.click();    
-					WebElement B2=  driver.findElement(By.xpath("(//textarea[@placeholder='Revised Remarks'])[2]"));
-					B2.clear();
-					Thread.sleep(2000);
-					  driver.findElement(By.xpath("(//textarea[@placeholder='Revised Remarks'])[2]")).sendKeys(RevisedRemarks); 
+					 WebElement textArea = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//textarea[@placeholder='Revised Remarks'])[2]")));
 
-				     driver.findElement(By.xpath("(//button[text()='Save'])")).click();
+					 textArea.sendKeys("\b".repeat(textArea.getAttribute("value").length()));
+					Thread.sleep(2000);
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//textarea[@placeholder='Revised Remarks'])[2]"))).sendKeys(RevisedRemarks); 
+
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//button[text()='Save'])"))).click();
 				     System.out.println("Date save");
 				     
 					//validation 
 				     Thread.sleep(2000);
 		
 				 		    // Wait for toast message to appear
-				     driver.findElement(By.xpath("//div[@role='alert']"));
+				     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='alert']")));
 						WebElement error = driver.findElement(By.xpath("//div[@role='alert']"));
 						
 						System.out.println(error.getText());
 						Thread.sleep(2000);
+//						WebElement textArea = driver.findElement(By.xpath("(//textarea[@placeholder='Revised Remarks'])[2]"));
+//
+//						 textArea.sendKeys("\b".repeat(textArea.getAttribute("value").length()));
 						
 						System.out.println("Clear");
 						if(error.getText().contains("Sucessfullly"))
