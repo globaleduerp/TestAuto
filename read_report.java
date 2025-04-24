@@ -115,19 +115,20 @@ public class read_report {
 				System.out.println("all data print successfully");
 				System.out.println("...........................................");
 				String filePath="C:\\Users\\formu\\eclipse-workspace\\automation\\src\\test\\java\\datadriventest\\cal_master_data.xlsx";						
-					excelutils.setCellData(filePath, "Sheet4",1,3,element.getText());
-					excelutils.setCellData(filePath, "Sheet4",2,3,element1.getText());
-					excelutils.setCellData(filePath, "Sheet4",3,3,element2.getText());
-					excelutils.setCellData(filePath, "Sheet4",4,3,element3.getText());
-					excelutils.setCellData(filePath, "Sheet4",5,3,element4.getText());
-					excelutils.setCellData(filePath, "Sheet4",6,3,element5.getText());
-					excelutils.setCellData(filePath, "Sheet4",7,3,element6.getText());
-					excelutils.setCellData(filePath, "Sheet4",8,3,element7.getText());
-					excelutils.setCellData(filePath, "Sheet4",9,3,element8.getText());
-					excelutils.setCellData(filePath, "Sheet4",10,3,element9.getText());
-					excelutils.setCellData(filePath, "Sheet4",11,3,element10.getText());
-					excelutils.setCellData(filePath, "Sheet4",12,3,element11.getText());
-					excelutils.setCellData(filePath, "Sheet4",13,3,element12.getText());
+				int x=2;	
+				excelutils.setCellData(filePath, "Sheet4",1,3,element.getText());
+					excelutils.setCellData(filePath, "Sheet4",2,x,element1.getText());
+					excelutils.setCellData(filePath, "Sheet4",3,x,element2.getText());
+					excelutils.setCellData(filePath, "Sheet4",4,x,element3.getText());
+					excelutils.setCellData(filePath, "Sheet4",5,x,element4.getText());
+					excelutils.setCellData(filePath, "Sheet4",6,x,element5.getText());
+					excelutils.setCellData(filePath, "Sheet4",7,x,element6.getText());
+					excelutils.setCellData(filePath, "Sheet4",8,x,element7.getText());
+					excelutils.setCellData(filePath, "Sheet4",9,x,element8.getText());
+					excelutils.setCellData(filePath, "Sheet4",10,x,element9.getText());
+					excelutils.setCellData(filePath, "Sheet4",11,x,element10.getText());
+					excelutils.setCellData(filePath, "Sheet4",12,x,element11.getText());
+					excelutils.setCellData(filePath, "Sheet4",13,x,element12.getText());
 	
 			    driver.switchTo().defaultContent();
 				}
