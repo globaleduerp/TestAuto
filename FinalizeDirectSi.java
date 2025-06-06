@@ -32,7 +32,7 @@ public class FinalizeDirectSi {
 			("//input[@placeholder='Search Data']"))).clear();
 Thread.sleep(3000);
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
-			("//input[@placeholder='Search Data']"))).sendKeys("testt");
+			("//input[@placeholder='Search Data']"))).sendKeys("CHANCHAL");
 	System.out.println("dummyyy");
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@onclick='SearchPopupData()']"))).click();
 	
@@ -49,7 +49,7 @@ Thread.sleep(3000);
 	M.sendKeys("Aug");
 	Thread.sleep(2000);
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
-			("//table[@class='ui-datepicker-calendar']"))).sendKeys("10");
+			("//a[text()='10']"))).click();
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
 			("//input[@id='GEE1750mdPickUPRoute']"))).sendKeys("Balkeshwar");
 	Thread.sleep(2000);
@@ -64,7 +64,9 @@ Thread.sleep(3000);
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()=' Save ']"))).click();
 	Thread.sleep(3000);
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Estimate']"))).click();
+	Thread.sleep(5000);
 	WebElement T=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='View Estimate']")));
+	T.click();
 	}
 
 	private static void highlight(WebDriver driver, WebElement element) {
