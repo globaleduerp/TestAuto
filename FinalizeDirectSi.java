@@ -30,7 +30,8 @@ public class FinalizeDirectSi {
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='btn btn-primary btn-sm']"))).click();
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
 			("//input[@placeholder='Search Data']"))).clear();
-Thread.sleep(3000);
+Thread.sleep(5000);
+Thread.sleep(2000);
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
 			("//input[@placeholder='Search Data']"))).sendKeys("CHANCHAL");
 	System.out.println("dummyyy");
