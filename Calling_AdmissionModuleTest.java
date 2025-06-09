@@ -40,8 +40,16 @@ public class Calling_AdmissionModuleTest {
 		        openapp(); //login
 		       
 		        System.out.println("Logged In");
+//		       Thread.sleep(3000);
+//		       DirectRegistration R1=new DirectRegistration();
+//		       R1.DirectRegistration1(driver, wait);
+		       
 		       Thread.sleep(3000);
-		       DirectRegistration R1=new DirectRegistration();
-		       R1.DirectRegistration1(driver, wait);
+		       FinalizeAdmi R2=new FinalizeAdmi();
+		       R2.FinalizeAdmi1(driver, wait);
+		       
+		       
+		       
+		       
 }
 }

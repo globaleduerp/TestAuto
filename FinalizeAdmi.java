@@ -1,6 +1,7 @@
 package AdmissionModule;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,73 +13,94 @@ import SalaryModule.Excelutils;
 
 public class FinalizeAdmi {
 
-	public void DirectRegistration1(WebDriver driver, WebDriverWait wait) throws InterruptedException, IOException {
+	public void FinalizeAdmi1(WebDriver driver, WebDriverWait wait) throws InterruptedException, IOException {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Admission']"))).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[normalize-space()='Finalize Admission']"))).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='New admission LS']"))).click();
+//		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='New admission LS']"))).click();
 		String filePath="C:\\Users\\RIYA\\eclipse-workspace\\Automation\\target\\Admission_Module.xlsx";
-		int rows=Excelutils.getRowCount(filePath, "DirectRegistration");
+		int rows=Excelutils.getRowCount(filePath, "FinAdd");
 		
 		System.out.println(rows);
 		
           for(int i=1; i<=rows;i++) {
 //        	  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Add']"))).click();
 			System.out.println("row no. is "+i);
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
-					("//input[@name='nm_undefined_enquiryforsessionyear_id']"))).click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
-					("//div[text()='2025-2026           ']"))).click();			
-  System.out.println("Sessionyear");
-			
+		
 			//reading data from Excel
-//			String Class= Excelutils.getCellData(filePath, "DirectRegistration", i,0);
-//			String Name= Excelutils.getCellData(filePath, "DirectRegistration", i,1);
-//			String DOB=Excelutils.getCellData(filePath, "DirectRegistration",i,2);
-//			String CNo=Excelutils.getCellData(filePath, "DirectRegistration",i,3);
-//			String Gender=Excelutils.getCellData(filePath, "DirectRegistration",i,4);
-//			String EMAIL=Excelutils.getCellData(filePath, "DirectRegistration",i,5);
-//			String AdharNo=Excelutils.getCellData(filePath, "DirectRegistration",i,6);
-//			String FatherName=Excelutils.getCellData(filePath, "DirectRegistration",i,7);
-//			String MotherName=Excelutils.getCellData(filePath, "DirectRegistration",i,8);
-//			String CorespondanceAddress=Excelutils.getCellData(filePath, "DirectRegistration",i,9);
-//			String PermanentAddress=Excelutils.getCellData(filePath, "DirectRegistration",i,10);
-//			String Pincode=Excelutils.getCellData(filePath, "DirectRegistration",i,11);
-			System.out.println("Hello");
-
-//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='nm_undefined_enquiryforsessionyear_id']"))).click();
-//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='2025-2026           ']"))).click();
-
-	 WebElement t=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='Admission For Class']")));
-	 t.click();
-	 t.sendKeys(Class);
-	 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='"+Class+"']"))).click();
-	boolean isClassMandatory = t.getAttribute("required") == null;
-		System.out.println(isClassMandatory);
-		if (Class == null || Class.trim().isEmpty()) {
-			System.out.println("Class is mandatory."); 
-	
-		}
-		else {
-			System.out.println("Class is not mandatory."); 
+			String Name= Excelutils.getCellData(filePath, "FinAdd", i,0);
+			String MonthName=Excelutils.getCellData(filePath, "FinAdd",i,1);
+			String 	Date=Excelutils.getCellData(filePath, "FinAdd",i,2);
+			String Pickuproute=Excelutils.getCellData(filePath, "FinAdd",i,3);
+			String Pickupstop=Excelutils.getCellData(filePath, "FinAdd",i,4);
+			String Droproute=Excelutils.getCellData(filePath, "FinAdd",i,5);
+			String Dropstop=Excelutils.getCellData(filePath, "FinAdd",i,6);
+			
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='btn btn-primary btn-sm']"))).click();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
+					("//input[@placeholder='Search Data']"))).clear();
+		Thread.sleep(2000);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
+					("//input[@placeholder='Search Data']"))).sendKeys(Name);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@onclick='SearchPopupData()']"))).click();
+			List<WebElement> results = driver.findElements(By.xpath("//input[@type='radio']"));
+			if (results.isEmpty()) {
+			    System.out.println("No result found for: " + Name + " at row " + i);
+			    continue; // skip to next row in Excel
 			}
-//	 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='"+Class+"']"))).click();
-	WebElement n= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='nm_undefined_firstname']")));
-	n.sendKeys(Name);
-	 boolean isNameMandatory = n.getAttribute("required") == null;
-		System.out.println(isNameMandatory);
-		if (Name == null || Name.trim().isEmpty()) {
-			System.out.println("Name is mandatory."); 
 
-		}
-		else {
-			System.out.println("Name is not mandatory."); 
-			}
+			// Continue with rest if result found
+			results.get(0).click();
+//			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@type='radio']"))).click();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='OK']"))).click();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//button[text()='...'])[2]"))).click();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@for='AllStops']"))).click();
+			Thread.sleep(2000);
 	 
-	 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='nm_undefined_dob']"))).sendKeys(DOB);
-	 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='nm_undefined_contactmobileno']"))).sendKeys(CNo);
-	WebElement G= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='id_undefined_gender_id']")));
-	G.click(); 
+			WebElement Datee=wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("GEE1750mdStartDate")));
+			Datee.click();
+			WebElement M=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
+					("//select[@class='ui-datepicker-month']")));
+			M.sendKeys(MonthName);
+			Thread.sleep(2000);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
+					("//a[text()='" + Date + "']"))).click();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
+					("//input[@id='GEE1750mdPickUPRoute']"))).sendKeys(Pickuproute);
+			Thread.sleep(2000);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
+					("//input[@id='GEE1750mdPickUPStop']"))).sendKeys(Pickupstop);
+			Thread.sleep(2000);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
+					("//input[@id='GEE1750mdDropRoute']"))).sendKeys(Droproute);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
+					("//input[@id='GEE1750mdDropStop']"))).sendKeys(Dropstop); 
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()=' Back to Admission Qestion']"))).click();
+			Thread.sleep(3000);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()=' Add/Update']"))).click();
+			Thread.sleep(3000);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='alert']")));
+			WebElement error = driver.findElement(By.xpath("//div[@role='alert']"));
+				if(error.getText().contains("Successfully"))
+				{
+					System.out.println("Test Pass");
+			    	 Excelutils.setCellData(filePath, "FinAdd",i,7,error.getText());
+			    	 Excelutils.fillGreenColor(filePath, "FinAdd",i,7);
+				
+				}
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Estimate']"))).click();
+			Thread.sleep(5000);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='alert']")));
+			WebElement error1 = driver.findElement(By.xpath("//div[@role='alert']"));
+				if(error1.getText().contains("generated"))
+				{
+					System.out.println("Test Pass");
+			    	 Excelutils.setCellData(filePath, "FinAdd",i,8,error.getText());
+			    	 Excelutils.fillGreenColor(filePath, "FinAdd",i,8);
 
-	}
-
+				
+				}
+			WebElement T=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='View Estimate']")));
+			T.click();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='printCloseButton']"))).click();	
 }
+}}
