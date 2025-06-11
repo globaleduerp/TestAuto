@@ -13,7 +13,7 @@ public class DirectRegistration {
 	public void DirectRegistration1(WebDriver driver, WebDriverWait wait) throws InterruptedException, IOException {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Admission']"))).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='Direct Registration']"))).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Add']"))).click();
+//		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Add']"))).click();
 		String filePath="C:\\Users\\RIYA\\eclipse-workspace\\Automation\\target\\Admission_Module.xlsx";
 		int rows=Excelutils.getRowCount(filePath, "DirectRegistration");
 		
@@ -21,10 +21,11 @@ public class DirectRegistration {
 		
 		
           for(int i=1; i<=rows;i++) {
-//        	  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Add']"))).click();
+  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Add']"))).click();
 			System.out.println("row no. is "+i);
+			  //input[@name='nm_undefined_enquiryforsessionyear_id']
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
-					("//input[@name='nm_undefined_enquiryforsessionyear_id']"))).click();
+					("//div[@id='id_undefined_enquiryforsessionyear_id']"))).click();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
 					("//div[text()='2025-2026           ']"))).click();			
   System.out.println("Sessionyear");
@@ -93,8 +94,8 @@ public class DirectRegistration {
 			 (By.xpath("//input[@id='id_undefined_pincode']"))).sendKeys(Pincode);
 	 
 	 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Save']"))).click();
-	 Thread.sleep(2000);
-	 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Save']"))).click();	
+//	 Thread.sleep(2000);
+//	 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Save']"))).click();	
 	 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='alert']")));
 		WebElement error = driver.findElement(By.xpath("//div[@role='alert']"));
 //		if(!error.isDisplayed())  {
@@ -107,8 +108,9 @@ public class DirectRegistration {
 		    
 //		System.out.println("_error in name");
 //		WebElement error2= driver.findElements(By.xpath("//div[@role='alert']"));
-	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='Toastify__close-button"
-			+ " Toastify__close-button--warning']"))).click();	
+		System.out.println(error.getText());
+//	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='Toastify__close-button"
+//			+ " Toastify__close-button--warning']"))).click();	
 		
 		
 		if(error.getText().contains("Sucessfullly"))
@@ -121,10 +123,12 @@ public class DirectRegistration {
 		
 		}
 		else  {
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='Toastify__close-button"
+					+ " Toastify__close-button--warning']"))).click();	
 			Excelutils.setCellData(filePath, "DirectRegistration",i,13,error.getText());
 	    	 Excelutils.PinkColor(filePath, "DirectRegistration",i,13);
 			Thread.sleep(2000);
-	 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Cancel']"))).click();
+	 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Back To List']"))).click();
 //	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='nm_undefined_enquiryforsessionyear_id']"))).click();
 //	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='2025-2026           ']"))).click();
 		}
@@ -133,7 +137,7 @@ public class DirectRegistration {
 //			
 //		{
 //			Thread.sleep(2000);
-//		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Cancel']"))).click();
+//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Back To List']"))).click();
 //		}
 
 		}

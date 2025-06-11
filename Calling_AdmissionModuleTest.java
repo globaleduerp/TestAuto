@@ -39,14 +39,19 @@ public class Calling_AdmissionModuleTest {
 		    void testlogin() throws InterruptedException, IOException {
 		        openapp(); //login
 		       
-		        System.out.println("Logged In");
+//		        System.out.println("Logged In");
 //		       Thread.sleep(3000);
 //		       DirectRegistration R1=new DirectRegistration();
 //		       R1.DirectRegistration1(driver, wait);
+//		       
+//		       Thread.sleep(3000);
+//		       FinalizeAdmi R2=new FinalizeAdmi();
+//		       R2.FinalizeAdmi1(driver, wait);
+//		       
+//		       Thread.sleep(3000);
+//		       FeeManage R3=new FeeManage();
+//		       R3.FeeManage1(driver, wait);
 		       
-		       Thread.sleep(3000);
-		       FinalizeAdmi R2=new FinalizeAdmi();
-		       R2.FinalizeAdmi1(driver, wait);
 		       
 		       
 		       

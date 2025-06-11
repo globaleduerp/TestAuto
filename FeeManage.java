@@ -11,7 +11,8 @@ import SalaryModule.Excelutils;
 
 public class FeeManage {
 
-		public void FeeManage1(WebDriver driver, WebDriverWait wait) throws InterruptedException, IOException {
+		public void FeeManage1
+		(WebDriver driver, WebDriverWait wait) throws InterruptedException, IOException {
 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//i[@class='fas fa-bars']"))).click();	
 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Fee Management']"))).click();
 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='Collect Fee']"))).click();
@@ -48,6 +49,9 @@ wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@cla
 		    	 Excelutils.setCellData(filePath, "FeeMgmt",i,3,error.getText());
 		    	 Excelutils.fillGreenColor(filePath, "FeeMgmt",i,3);
 			
+			}
+			else {
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='btnHideModal']"))).click();
 			}
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Print Receipt']"))).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Print Receipt']"))).click();

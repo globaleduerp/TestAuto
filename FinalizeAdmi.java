@@ -14,7 +14,7 @@ import SalaryModule.Excelutils;
 public class FinalizeAdmi {
 
 	public void FinalizeAdmi1(WebDriver driver, WebDriverWait wait) throws InterruptedException, IOException {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Admission']"))).click();
+//		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Admission']"))).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[normalize-space()='Finalize Admission']"))).click();
 //		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='New admission LS']"))).click();
 		String filePath="C:\\Users\\RIYA\\eclipse-workspace\\Automation\\target\\Admission_Module.xlsx";
@@ -47,7 +47,9 @@ public class FinalizeAdmi {
 			    System.out.println("No result found for: " + Name + " at row " + i);
 			    continue; // skip to next row in Excel
 			}
-
+			else {
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='btnHideModal']"))).click();
+			}
 			// Continue with rest if result found
 			results.get(0).click();
 //			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@type='radio']"))).click();
