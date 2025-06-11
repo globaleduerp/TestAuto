@@ -58,31 +58,31 @@ public class CallingTestNG_Calendar {
 //	       Thread.sleep(3000);
 //	       EmpLeaveAllo S2 = new EmpLeaveAllo();
 //	       S2.EmpLeaveAllo1(driver, wait);
-//	       
-	       Thread.sleep(3000);
-	       EmpLaeaveApp S3 = new EmpLaeaveApp();
-           S3.emp_application(driver, wait);
-           
-	       Thread.sleep(3000);
-	       EmployeeApproval S4=new EmployeeApproval();
-	       S4.EmployeeApproval1(driver,wait);
 ////	       
-	       Thread.sleep(3000);
-	       EmpSalary S5=new EmpSalary();
-	       S5.EmpSalary1(driver, wait);
-	       
-	       Thread.sleep(3000);
-	       OverwriteStaff S6=new OverwriteStaff();
-	       S6.OverwriteStaff1(driver, wait);
-	       
-	      
-	       
-	       Thread.sleep(2000);
-	       
-	       
-	       Thread.sleep(2000);
-	       Re_report R3= new Re_report();
-	       R3.Re_report1(driver, wait);
+//	       Thread.sleep(3000);
+//	       EmpLaeaveApp S3 = new EmpLaeaveApp();
+//           S3.emp_application(driver, wait);
+//           
+//	       Thread.sleep(3000);
+//	       EmployeeApproval S4=new EmployeeApproval();
+//	       S4.EmployeeApproval1(driver,wait);
+//////	       
+//	       Thread.sleep(3000);
+//	       EmpSalary S5=new EmpSalary();
+//	       S5.EmpSalary1(driver, wait);
+//	       
+//	       Thread.sleep(3000);
+//	       OverwriteStaff S6=new OverwriteStaff();
+//	       S6.OverwriteStaff1(driver, wait);
+//	       
+//	      
+//	       
+//	       Thread.sleep(2000);
+//	       
+//	       
+//	       Thread.sleep(2000);
+//	       Re_report R3= new Re_report();
+//	       R3.Re_report1(driver, wait);
 //	       driver.close();
 //	       
 //	       Thread.sleep(2000);

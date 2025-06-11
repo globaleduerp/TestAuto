@@ -1,6 +1,7 @@
 package SalaryModule;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -123,5 +124,24 @@ public class Excelutils {
 		fi.close();
 		fo.close();		
 }
+
+	public static void PinkColor(String Xlfile, String Xlsheet, int rownum, int Colnum) throws IOException {
+		// TODO Auto-generated method stub
+		fi=new FileInputStream(Xlfile);
+		wb=new XSSFWorkbook (fi);
+		ws=wb.getSheet(Xlsheet);
+		row=ws.getRow(rownum);
+		cell=row.getCell(Colnum);
+		
+		style=wb.createCellStyle();
+		style.setFillForegroundColor(IndexedColors.PINK.getIndex());
+		style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+		cell.setCellStyle(style);
+		fo=new FileOutputStream(Xlfile);
+		wb.write(fo);
+		wb.close();
+		fi.close();
+		fo.close();	
+	}
 }
 // edit by bhumi for testing
