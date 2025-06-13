@@ -20,8 +20,8 @@ public class Calling_AdmissionModuleTest {
 		    void setup() {
 		        WebDriverManager.chromedriver().setup();
 		        driver = new ChromeDriver();  // Create WebDriver instance
-		        wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-		        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		        wait = new WebDriverWait(driver, Duration.ofSeconds(90));
+		        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(90));
 		        driver.manage().window().maximize();
 		        driver.get("https://ge-erp.com/Admin/Login");
 		    }
@@ -39,18 +39,18 @@ public class Calling_AdmissionModuleTest {
 		    void testlogin() throws InterruptedException, IOException {
 		        openapp(); //login
 		       
-//		        System.out.println("Logged In");
-//		       Thread.sleep(3000);
-//		       DirectRegistration R1=new DirectRegistration();
-//		       R1.DirectRegistration1(driver, wait);
-//		       
-//		       Thread.sleep(3000);
-//		       FinalizeAdmi R2=new FinalizeAdmi();
-//		       R2.FinalizeAdmi1(driver, wait);
-//		       
-//		       Thread.sleep(3000);
-//		       FeeManage R3=new FeeManage();
-//		       R3.FeeManage1(driver, wait);
+		        System.out.println("Logged In");
+		       Thread.sleep(3000);
+		       DirectRegistration R1=new DirectRegistration();
+		       R1.DirectRegistration1(driver, wait);
+		       
+		       Thread.sleep(3000);
+		       FinalizeAdmi R2=new FinalizeAdmi();
+		       R2.FinalizeAdmi1(driver, wait);
+		       
+		       Thread.sleep(3000);
+		       FeeManage R3=new FeeManage();
+		       R3.FeeManage1(driver, wait);
 		       
 		       
 		       
